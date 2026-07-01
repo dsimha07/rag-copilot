@@ -1,0 +1,10 @@
+# Walking-skeleton deps.
+#   Generation: Anthropic (Claude Sonnet)
+#   Embeddings: OpenAI (text-embedding-3-small) — Anthropic has no embeddings API
+#   Vector store: Chroma
+# Full list for the hardened build is in REQUIREMENTS_project1.md section 7.
+anthropic>=0.40
+openai>=1.30
+chromadb>=0.5
+pydantic>=2.6
+python-dotenv>=1.0

@@ -1,0 +1,2 @@
+# docker-compose.yml — placeholder.
+# TODO: services — api, vector store (qdrant/chroma), dashboard.
