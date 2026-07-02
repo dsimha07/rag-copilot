@@ -1,6 +1,8 @@
-"""Build the Chroma index: embed chunks and store with metadata. (FR-6 — dense
-only for the skeleton; a BM25 index over the SAME chunk IDs is added during
-hardening.)
+"""Build the Chroma index AND the BM25 index over the SAME chunk IDs. (FR-6)
+
+Both indexes must always be built together and kept in sync — they are two
+views of the same chunks. Chroma stores dense vectors for semantic search;
+the BM25 pickle stores tokenized text for keyword search.
 """
 from __future__ import annotations
 import chromadb
@@ -20,14 +22,16 @@ def get_collection(reset: bool = False):
 
 
 def _clean_meta(meta: dict) -> dict:
-    # Chroma metadata values must be str/int/float/bool — drop None.
     return {k: v for k, v in meta.items() if v is not None}
 
 
 def index_chunks(chunks: list[Chunk], reset: bool = False) -> int:
+    """Embed chunks into Chroma AND build the BM25 index."""
     col = get_collection(reset=reset)
     if not chunks:
         return 0
+
+    # --- dense index (Chroma) ---
     embeddings = embed_texts([c.text for c in chunks])
     col.add(
         ids=[c.metadata.chunk_id for c in chunks],
@@ -35,4 +39,9 @@ def index_chunks(chunks: list[Chunk], reset: bool = False) -> int:
         embeddings=embeddings,
         metadatas=[_clean_meta(c.metadata.model_dump()) for c in chunks],
     )
+
+    # --- sparse index (BM25) ---
+    from src.retrieval.sparse import build_bm25_index
+    build_bm25_index(chunks)
+
     return len(chunks)

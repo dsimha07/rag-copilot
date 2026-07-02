@@ -7,3 +7,4 @@ data/cleaned/
 .pytest_cache/
 *.egg-info/
 data/chroma/
+data/bm25_index.pkl
