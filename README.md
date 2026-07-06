@@ -42,6 +42,7 @@ text-embedding-3-small handles embeddings, and ChromaDB serves as the local vect
 ✅ Streamlit dashboard — answer, citations, confidence, sources, strategy toggle
 ✅ Index manifest — written after every ingestion run
 ✅ Probe set — 10 probe questions tied to known source sections
+✅ FastAPI /ask endpoint — POST /ask, GET /health, GET /manifest
 ⬜ Project 7 — RAG freshness and drift monitor
 
 ## Tech Stack
@@ -125,6 +126,10 @@ python -m src.eval.run --strategy dense   # compare dense vs hybrid
 
 # launch the dashboard
 streamlit run dashboards/copilot_app.py
+
+# start the API server
+uvicorn src.api.app:app --reload
+# interactive docs available at http://localhost:8000/docs
 ```
 
 ## Example Output
@@ -238,6 +243,7 @@ so migrating to Qdrant for production only touches those two files.
 - [x] Streamlit dashboard
 - [x] Index manifest (Project 7 bridge)
 - [x] Probe set (Project 7 bridge)
+- [x] FastAPI /ask endpoint — POST /ask, GET /health, GET /manifest
 - [ ] Project 7 — RAG freshness and drift monitor
 
 ## Note on Project 7
