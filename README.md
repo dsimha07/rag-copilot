@@ -40,8 +40,8 @@ text-embedding-3-small handles embeddings, and ChromaDB serves as the local vect
 ✅ Eval CLI — python -m src.eval.run --strategy hybrid
 ✅ Markdown report with per-question results and failed case analysis
 ✅ Streamlit dashboard — answer, citations, confidence, sources, strategy toggle
-⬜ Index manifest (Project 7 bridge)
-⬜ Probe set (Project 7 bridge)
+✅ Index manifest — written after every ingestion run
+✅ Probe set — 10 probe questions tied to known source sections
 ⬜ Project 7 — RAG freshness and drift monitor
 
 ## Tech Stack
@@ -236,8 +236,8 @@ so migrating to Qdrant for production only touches those two files.
 - [x] Golden Q&A eval set — 20 questions across 5 categories
 - [x] Eval CLI with markdown report
 - [x] Streamlit dashboard
-- [ ] Index manifest (Project 7 bridge)
-- [ ] Probe set (Project 7 bridge)
+- [x] Index manifest (Project 7 bridge)
+- [x] Probe set (Project 7 bridge)
 - [ ] Project 7 — RAG freshness and drift monitor
 
 ## Note on Project 7

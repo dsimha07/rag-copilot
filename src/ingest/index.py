@@ -25,7 +25,7 @@ def _clean_meta(meta: dict) -> dict:
     return {k: v for k, v in meta.items() if v is not None}
 
 
-def index_chunks(chunks: list[Chunk], reset: bool = False) -> int:
+def index_chunks(chunks: list[Chunk],docs: list[dict] | None = None, reset: bool = False) -> int:
     """Embed chunks into Chroma AND build the BM25 index."""
     col = get_collection(reset=reset)
     if not chunks:
@@ -43,5 +43,14 @@ def index_chunks(chunks: list[Chunk], reset: bool = False) -> int:
     # --- sparse index (BM25) ---
     from src.retrieval.sparse import build_bm25_index
     build_bm25_index(chunks)
+
+    # manifest
+    if docs is not None:
+        from src.common.manifest import build_manifest, write_manifest
+        chunks_per_doc: dict[str, int] = {}
+        for c in chunks:
+            chunks_per_doc[c.metadata.doc_id] = chunks_per_doc.get(c.metadata.doc_id, 0) + 1
+        manifest = build_manifest(docs, chunks_per_doc)
+        write_manifest(manifest)
 
     return len(chunks)

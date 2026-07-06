@@ -1,0 +1,10 @@
+{"id": "p001", "question": "How do I reset my password?", "expected_chunks": ["faq::0"], "source_section": "faq — password reset"}
+{"id": "p002", "question": "How long does a password reset link last?", "expected_chunks": ["faq::0"], "source_section": "faq — link expiry"}
+{"id": "p003", "question": "Where do reset emails come from?", "expected_chunks": ["faq::0"], "source_section": "faq — email sender"}
+{"id": "p004", "question": "How do I invite teammates to a project?", "expected_chunks": ["onboarding::0"], "source_section": "onboarding — invite teammates"}
+{"id": "p005", "question": "How do I create my first project?", "expected_chunks": ["onboarding::0"], "source_section": "onboarding — first project"}
+{"id": "p006", "question": "When are invoices sent?", "expected_chunks": ["billing::0"], "source_section": "billing — invoices"}
+{"id": "p007", "question": "How do I request a data export?", "expected_chunks": ["account_policy::0"], "source_section": "account policy — data access"}
+{"id": "p008", "question": "What happens if I fail to log in multiple times?", "expected_chunks": ["troubleshooting::0", "account_policy::0"], "source_section": "troubleshooting + policy — lockout"}
+{"id": "p009", "question": "How long does an account stay locked?", "expected_chunks": ["account_policy::0"], "source_section": "account policy — lockout duration"}
+{"id": "p010", "question": "Can I get a refund?", "expected_chunks": ["billing::0"], "source_section": "billing — refunds"}

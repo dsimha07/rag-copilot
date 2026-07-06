@@ -8,3 +8,4 @@ data/cleaned/
 *.egg-info/
 data/chroma/
 data/bm25_index.pkl
+data/index_manifest.json
